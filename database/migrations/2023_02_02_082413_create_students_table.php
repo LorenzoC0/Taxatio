@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('name', 64);
             $table->string('surname', 64);
             $table->boolean('valutation_done')->default(false);
-            $table->bigInteger('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('classes');
+            $table->foreignId('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }

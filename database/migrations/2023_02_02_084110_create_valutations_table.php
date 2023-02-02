@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('valutation_request_id')->references('id')->on('valutation_requests');
             $table->integer('grade');
             $table->string('comment');
-            $table->string('status', ['read', 'unread'])->default('unread');
+            $table->enum('status', ['read', 'unread'])->default('unread');
             $table->string('student_id_hash', 32);
             $table->timestamps();
         });
