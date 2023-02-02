@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,200;9..144,300;9..144,400;9..144,500&family=Syne:wght@400;500&display=swap');
+
+body {
+    font-family:'Syne', sans-serif;
+}
+
+.background-login {
+    background-color: #00132A;
+   /* background-image: url(https://unsplash.com/it/foto/aJTiW00qqtI); */
+    position: relative;
+    height: 100vh;
+}
+.background-login img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+}
+.sfondo-login-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #021124e8;
+}
+.container-login {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+.container-login h1{
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: bold;
+    font-size: 62px;
+    color: #00CE9D;
+}
+.container-login label{
+    text-align: left;
+    font-size: 22px;
+    color: #CC88FF;
+}
+.input-text{
+    width: 100%;
+    height: 45px;
+    border-radius: 50px;
+    background-color: #EED9FE !important;
+    text-align: center;
+    font-size: 18px;
+    color: #b253fb;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.button-login {
+    color: #0095B6;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #C6F5FF !important;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.button-login:hover {
+    color: #C6F5FF;
+    background-color: #0095B6 !important;
+}
