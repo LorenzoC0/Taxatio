@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'cf',
         'email',
         'password',
     ];
@@ -41,4 +41,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userable()
+    {
+        return $this->morphTo();
+    }
+
+    public function isAdmin()
+    {
+        return $this->userable_type === 'App\Models\Admin';
+    }
+
+    public function isProfessor()
+    {
+        return $this->userable_type === 'App\Models\Professor';
+    }
+
+    public function isCoordinator()
+    {
+        return $this->userable_type === 'App\Models\Coordinator';
+    }
+
+    public function isStudent()
+    {
+        return $this->userable_type === 'App\Models\Student';
+    }
 }
