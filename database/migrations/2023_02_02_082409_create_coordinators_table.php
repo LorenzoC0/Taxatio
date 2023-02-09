@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('coordinators', function (Blueprint $table) {
             $table->id();
             $table->string('cf')->unique();
-            $table->foreign('cf')->references('cf')->on('users');            $table->string('name', 64);
+            $table->foreign('cf')->references('cf')->on('users');            
+            $table->string('name', 64);
             $table->string('surname', 64);
             $table->timestamps();
         });
