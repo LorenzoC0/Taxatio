@@ -14,19 +14,16 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 // Guest Routes
-Route::get('/', function () { return view('homeCoo'); });
+Route::get('/', function () { return view('welcome'); });
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/register', [LoginController::class, 'doRegister'])->name('register');
+Route::post('/register', [LoginController::class, 'doRegisterStudent'])->name('register');
 Route::post('/login', [LoginController::class, 'doLogin'])->name('login');
 
 // Authenticated Routes (Coordinators)
 Route::middleware(['auth', 'role:coordinator'])->group(function () {
-    Route::get('/home', function () { return view('homeCoo'); })->name('home');
+    Route::get('/home', function () { return view('home'); })->name('home');
     Route::get('/logout', function () {
         Auth::logout();
         return redirect()->route('welcome');
@@ -59,4 +56,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Auth::logout();
         return redirect()->route('welcome');
     })->name('logout');
+
 });

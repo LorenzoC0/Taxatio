@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_cf')->references('cf')->on('users');
-            $table->string('name', 64);
+            $table->string('cf')->unique();
+            $table->foreign('cf')->references('cf')->on('users');            $table->string('name', 64);
             $table->string('surname', 64);
             $table->string('topic', 64);
             $table->timestamps();
