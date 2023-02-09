@@ -9,6 +9,8 @@ class ProfessorCourse extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function professor()
     {
         return $this->belongsTo(Professor::class);
