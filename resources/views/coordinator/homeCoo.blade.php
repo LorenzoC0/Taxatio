@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html>
+@extends('template')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+@section('title')
+    Home Coordinatore | TAXATIO 
+@endsection
 
-<body class="antialiased bg-amber-100 tracking-wide font-['helvetica']">
+@section('body')
     <div class="flex flex-row h-16 px-3">
         <div class="flex items-end h-16 w-4/6">
             <p class="flex text-3xl mb-1">Ciao _________!</p>
@@ -417,5 +414,4 @@
         <div class="flex flex-row justify-between px-3">
             <p class="text-3xl px-3">SECONDO ANNO</p>
         </div>
-</body>
-</html>
+@endsection
