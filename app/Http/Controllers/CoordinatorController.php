@@ -12,15 +12,16 @@ class CoordinatorController extends Controller
 
 
     public function create(){
-        return view('coordinators.create');
+        return view('coordinator.create');
     } 
     public function store(Request $request){
-        $coordinator = new Coordinator();
-        $coordinator->name = $request->name;
-        $coordinator->surname = $request->surname;
-        $coordinator->save();
-
-        return redirect('/welcome');
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "cf" => "required",
+        ]);
+        Coordinator::create($validatedData);
+        return redirect('/coordinator/home');
     }
     public function modifica($id){
         return view('coordinators.edit',[
@@ -30,13 +31,18 @@ class CoordinatorController extends Controller
 
     public function elimina($id){
         Coordinator::destroy($id);
-        return redirect('/welcome');
+        return redirect('/coordinator/home');
     }
     public function update(Request $request, $id){
         $coordinator = Coordinator::find($id);
-        $coordinator->name = $request->name;
-        $coordinator->surname = $request->surname;
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "cf" => "required",
+
+        ]);
+        $coordinator->fill($validatedData);
         $coordinator->save();
-        return redirect('/welcome');
+        return redirect('/coordinator/home');
     }
 }

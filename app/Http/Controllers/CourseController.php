@@ -14,12 +14,13 @@ class courseController extends Controller
         return view('courses.create');
     } 
     public function store(Request $request){
-        $course = new Course();
-
-        $course->name = $request->name;
-        $course->year = $request->year;
-        $course->description = $request->description;
-        $course->save();
+        $validatedData = $request->validate([
+            "year" => "required",
+            "name" => "required",
+            "description" => "required",
+            "coordinator" => "required",
+        ]);
+        Course::create($validatedData);
 
         return redirect('/welcome');
     }
@@ -36,9 +37,13 @@ class courseController extends Controller
     public function update(Request $request, $id){
         $course = Course::find($id);
 
-        $course->name = $request->name;
-        $course->year = $request->year;
-        $course->description = $request->description;
+        $validatedData = $request->validate([
+            "year" => "required",
+            "name" => "required",
+            "description" => "required",
+            "coordinator" => "required",
+        ]);
+        $course->fill($validatedData);
         $course->save();
 
         return redirect('/welcome');

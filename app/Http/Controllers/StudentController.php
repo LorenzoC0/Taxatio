@@ -14,13 +14,14 @@ class StudentController extends Controller
         return view('students.create');
     } 
     public function store(Request $request){
-        $student = new Student();
-
-        $student->name = $request->name;
-        $student->surname = $request->surname;
-        $student->valutation_done = $request->valutation_done;
-        $student->save();
-
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "valutation_done" => "required",
+            "cf" => "required",
+            "course_id"=>"required",
+        ]);
+        Student::create($validatedData);
         return redirect('/welcome');
     }
     public function modifica($id){
@@ -36,9 +37,14 @@ class StudentController extends Controller
     public function update(Request $request, $id){
         $student = Student::find($id);
 
-        $student->name = $request->name;
-        $student->surname = $request->surname;
-        $student->valutation_done = $request->valutation_done;
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "valutation_done" => "required",
+            "cf" => "required",
+            "course_id"=>"required",
+        ]);
+        $student->fill($validatedData);
         $student->save();
 
         return redirect('/welcome');
