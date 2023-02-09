@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,48 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+// Guest Routes
+Route::get('/', function () { return view('homeCoo'); });
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register', [LoginController::class, 'doRegister'])->name('register');
+Route::post('/login', [LoginController::class, 'doLogin'])->name('login');
+
+// Authenticated Routes (Coordinators)
+Route::middleware(['auth', 'role:coordinator'])->group(function () {
+    Route::get('/home', function () { return view('homeCoo'); })->name('home');
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect()->route('welcome');
+    })->name('logout');
 });
 
-Route::get("/login", [LoginController::class, "index"]);
+
+// Authenticated Routes (Students)
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/home', function () { return view('homeStu'); })->name('home');
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect()->route('welcome');
+    })->name('logout');
+});
+
+// Authenticated Routes (Professors)
+Route::middleware(['auth', 'role:professor'])->group(function () {
+    Route::get('/home', function () { return view('homePro'); })->name('home');
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect()->route('welcome');
+    })->name('logout');
+});
+
+// Authenticated Routes (Administrators)
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/home', function () { return view('homeAdm'); })->name('home');
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect()->route('welcome');
+    })->name('logout');
+});
