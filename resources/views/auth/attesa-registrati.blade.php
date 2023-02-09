@@ -11,6 +11,7 @@
     <div class="container-login-attesa z-20">
             <h1 class="mb-6">GRAZIE PER ESSERTI REGISTRATO!</h1>
             <p>Rimani in attesa per la verifica del tuo account</p>
+            <!-- Non cancellare i /div qui sotto 😂 -->
             <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
 </div>
