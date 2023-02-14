@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\CoordinatorController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -19,21 +23,21 @@ Route::get('/', function () { return view('welcome'); });
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register', [LoginController::class, 'doRegisterStudent'])->name('register');
-Route::post('/login', [LoginController::class, 'doLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'doLogin']);
+Route::get('/attesa', function () { return view('auth.attesa'); })->name('attesa');
 
 // Authenticated Routes (Coordinators)
 Route::middleware(['auth', 'role:coordinator'])->group(function () {
-    Route::get('/home', function () { return view('home'); })->name('home');
+    Route::get('/home', [CoordinatorController::class, 'index'])->name('coordinator.home');
     Route::get('/logout', function () {
         Auth::logout();
         return redirect()->route('welcome');
     })->name('logout');
 });
 
-
 // Authenticated Routes (Students)
 Route::middleware(['auth', 'role:student'])->group(function () {
-    Route::get('/home', function () { return view('homeStu'); })->name('home');
+    Route::get('/home', [StudentController::class, 'index'])->name('student.home');
     Route::get('/logout', function () {
         Auth::logout();
         return redirect()->route('welcome');
@@ -42,7 +46,7 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 
 // Authenticated Routes (Professors)
 Route::middleware(['auth', 'role:professor'])->group(function () {
-    Route::get('/home', function () { return view('homePro'); })->name('home');
+    Route::get('/home', [ProfessorController::class, 'index'])->name('professor.home');
     Route::get('/logout', function () {
         Auth::logout();
         return redirect()->route('welcome');
@@ -51,10 +55,9 @@ Route::middleware(['auth', 'role:professor'])->group(function () {
 
 // Authenticated Routes (Administrators)
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/home', function () { return view('homeAdm'); })->name('home');
+    Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/logout', function () {
         Auth::logout();
         return redirect()->route('welcome');
     })->name('logout');
-
 });
