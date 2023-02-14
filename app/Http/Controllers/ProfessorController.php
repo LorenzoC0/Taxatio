@@ -14,12 +14,13 @@ class ProfessorController extends Controller
         return view('professors.create');
     } 
     public function store(Request $request){
-        $professor = new Professor();
-
-        $professor->name = $request->name;
-        $professor->surname = $request->surname;
-        $professor->topic = $request->topic;
-        $professor->save();
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "topic" => "required",
+            "cf" => "required",
+        ]);
+        Professor::create($validatedData);
 
         return redirect('/welcome');
     }
@@ -36,9 +37,13 @@ class ProfessorController extends Controller
     public function update(Request $request, $id){
         $professor = professor::find($id);
 
-        $professor->name = $request->name;
-        $professor->surname = $request->surname;
-        $professor->topic = $request->topic;
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "topic" => "required",
+            "cf" => "required",
+        ]);
+        $professor->fill($validatedData);
         $professor->save();
 
         return redirect('/welcome');
