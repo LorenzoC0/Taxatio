@@ -21,6 +21,10 @@ class Professor extends Model
         return $this->hasMany(Valutation::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 
 }

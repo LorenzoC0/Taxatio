@@ -43,28 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function userable()
-    {
-        return $this->morphTo();
+    public function student(){
+        return $this->hasOne(Student::class);
     }
 
-    public function isAdmin()
-    {
-        return $this->userable_type === 'App\Models\Admin';
+    public function professor(){
+        return $this->hasOne(Teacher::class);
     }
 
-    public function isProfessor()
-    {
-        return $this->userable_type === 'App\Models\Professor';
+    public function admin(){
+        return $this->hasOne(Admin::class);
     }
 
-    public function isCoordinator()
-    {
-        return $this->userable_type === 'App\Models\Coordinator';
-    }
-
-    public function isStudent()
-    {
-        return $this->userable_type === 'App\Models\Student';
+    public function coordinator(){
+        return $this->hasOne(Coordinator::class);
     }
 }
