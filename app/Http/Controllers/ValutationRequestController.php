@@ -13,10 +13,11 @@ class ValutationRequestController extends Controller
         return view('valutationRequests.create');
     } 
     public function store(Request $request){
-        $valutationRequest = new ValutationRequest();
-        $valutationRequest->is_active = $request->is_active;
-        $valutationRequest->save();
-
+        $validatedData = $request->validate([
+            "course_id" => "required",
+            "is_active" => "required",
+        ]);
+        ValutationRequest::create($validatedData);
         return redirect('/welcome');
     }
     public function modifica($id){
@@ -31,9 +32,11 @@ class ValutationRequestController extends Controller
     }
     public function update(Request $request, $id){
         $valutationRequest = ValutationRequest::find($id);
-
-        $valutationRequest->name = $request->name;
-        $valutationRequest->is_active = $request->is_active;
+        $validatedData = $request->validate([
+            "course_id" => "required",
+            "is_active" => "required",
+        ]);
+        $valutationRequest->fill($validatedData);
         $valutationRequest->save();
 
         return redirect('/welcome');

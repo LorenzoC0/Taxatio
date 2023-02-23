@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-    Home Coordinatore | TAXATIO 
+    Home Coordinatore | TAXATIO
 @endsection
 
 @section('body')
@@ -26,8 +26,7 @@
         </div>
     </div>
     <div class="flex h-9 px-3">
-        <p class="flex items-center">Ti sei loggato come _______, dai un occhio allo stato delle valutazioni...
-        </p>
+        <p class="flex items-center">Ti sei loggato come {{ $coordinator->name }} {{ $coordinator->surname}}, dai un occhio allo stato delle valutazioni...</p>
     </div>
     <div class="flex flex-col mt-4">
         <div class="flex flex-row justify-between px-3">
@@ -35,55 +34,56 @@
         </div>
         <div class="flex flex-row overflow-x-scroll">
             <div class="glide flex h-[450px] px-3">
-                <div class="flex flex-col h-[400px] w-[400px] bg-[#EED9FE] rounded-[50px] my-auto">
-                    <div class="flex items-center h-[80px] m-auto">
-                        <p class="text-3xl">CLASSE PIXEL</p>
-                    </div>
-                    <div class="inline-flex h-[230px] p-3">
-                        <div class="w-[150px] bg-[#E4C0FF] rounded-2xl p-3">
-                            <span>
-                                <p>aaaa</p>
-                                <p>bbbbb</p>
-                            </span>
-                            <span>
-                                <p>ccccc</p>
-                                <p>ddddd</p>
-                            </span>
-                            <span>
-                                <p>eeee</p>
-                            </span>
+                @foreach($coordinator->courses as $course)
+                    <div class="flex flex-col h-[400px] w-[400px] bg-[#EED9FE] rounded-[50px] my-auto">
+                        <div class="flex items-center h-[80px] m-auto">
+                            <p class="text-3xl">CLASSE $course->name</p>
                         </div>
-                        <div class="w-[250px] p-3">
-                            <div class="flex justify-between mb-1">
-                                <span class="text-lg font-medium">Stato valutazione</span>
+                        <div class="inline-flex h-[230px] p-3">
+                            <div class="w-[150px] bg-[#E4C0FF] rounded-2xl p-3">
+                                <span>
+                                    <p>aaaa</p>
+                                    <p>bbbbb</p>
+                                </span>
+                                <span>
+                                    <p>ccccc</p>
+                                    <p>ddddd</p>
+                                </span>
+                                <span>
+                                    <p>eeee</p>
+                                </span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-[#B95DFF] h-2.5 rounded-full" style="width: 45%"></div>
-                            </div>
-                            <div class="flex justify-end">
-                                <span class="text-lg font-medium">45%</span>
-                            </div>
-                            <div>
-                                <p>dfgwehrgsefhgsr</p>
-                                <p>sgdfgsdfbsdfhs</p>
+                            <div class="w-[250px] p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-lg font-medium">Stato valutazione</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                    <div class="bg-[#B95DFF] h-2.5 rounded-full" style="width: 45%"></div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <span class="text-lg font-medium">45%</span>
+                                </div>
+                                <div>
+                                    <p>dfgwehrgsefhgsr</p>
+                                    <p>sgdfgsdfbsdfhs</p>
+                                </div>
                             </div>
                         </div>
+                        <div class="inline-flex h-[90px] px-4">
+                            <button
+                                class="m-auto h-[50px] w-[160px] bg-[#B95DFF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                                STUDENTI
+                            </button>
+                            <button
+                                class="m-auto h-[50px] w-[160px] bg-[#B95DFF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                                INSEGNANTI
+                            </button>
+                        </div>
                     </div>
-                    <div class="inline-flex h-[90px] px-4">
-                        <button
-                            class="m-auto h-[50px] w-[160px] bg-[#B95DFF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
-                            STUDENTI
-                        </button>
-                        <button
-                            class="m-auto h-[50px] w-[160px] bg-[#B95DFF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
-                            INSEGNANTI
-                        </button>
-                    </div>
-                </div>
             </div>
-            
-            
-            
+
+
+
             <div class="flex h-[450px] px-3">
                 <div class="flex flex-col h-[400px] w-[400px] bg-blue-300 rounded-[50px] my-auto">
                     <div class="flex items-center h-[80px] m-auto">
@@ -514,5 +514,5 @@
                     </div>
                 </div>
             </div>
-        
+
 @endsection

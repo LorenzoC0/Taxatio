@@ -8,7 +8,7 @@
     <div class="w-screen h-screen bg-amber-100">
         <div class="flex flex-row h-16 px-3">
             <div class="flex items-end h-16 w-4/6">
-                <p class="flex text-3xl mb-1">Ciao David!</p>
+                <p class="flex text-3xl mb-1">Ciao {{$student->name}}!</p>
             </div>
             <div class="flex items-end justify-end h-16 w-2/6">
                 <form>

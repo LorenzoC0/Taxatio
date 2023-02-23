@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coordinator;
+use App\Models\Professor;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 
 class CoordinatorController extends Controller
-{   
+{
+    public function index($coordinatorId){
+        $coordinator = Coordinator::find($coordinatorId);
 
+        return view('coordinators.home',[
+            'coordinator'=>$coordinator
+        ]);
+    }
 
     public function create(){
         return view('coordinators.create');
-    } 
+    }
     public function store(Request $request){
         $coordinator = new Coordinator();
         $coordinator->name = $request->name;

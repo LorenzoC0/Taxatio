@@ -10,12 +10,18 @@
     <div class="sfondo-login-overlay z-15"></div>
     <div class="container-login z-20">
             <h1 class="mb-6">LOGIN</h1>
-            <form method="POST" action="">
+            <form method="POST" action="/login">
                 @csrf
                 <label for="email" class="block">email</label>
-                <input type="text" id="email" name="email" class="input-text mb-4" required>
+                <input type="text" id="email" name="email" class="input-text mb-4" required value="{{old('email')}}">
+                @error('email')
+                    <span class="text-red-500 font-bold">{{ $message }}</span>
+                @enderror
                 <label for="password" class="block">password</label>
                 <input type="password" id="password" name="password" class="input-text mb-12" minlength="8" required>
+                @error('password')
+                    <span class="text-red-500 font-bold">{{ $message }}</span>
+                @enderror
 
                 <input type="submit" value="ACCEDI" class="block button-login">
             </form>

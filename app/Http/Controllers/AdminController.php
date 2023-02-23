@@ -12,11 +12,12 @@ class AdminController extends Controller
         return view('admins.create');
     } 
     public function store(Request $request){
-        $admin = new Admin();
-
-        $admin->name = $request->name;
-        $admin->surname = $request->surname;
-        $admin->save();
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "cf" => "required",
+        ]);
+        Admin::create($validatedData);
 
         return redirect('/welcome');
     }
@@ -32,9 +33,13 @@ class AdminController extends Controller
     }
     public function update(Request $request, $id){
         $admin = Admin::find($id);
+        $validatedData = $request->validate([
+            "name" => "required",
+            "surname" => "required",
+            "cf" => "required",
 
-        $admin->name = $request->name;
-        $admin->surname = $request->surname;
+        ]);
+        $admin->fill($validatedData);
         $admin->save();
 
         return redirect('/welcome');
