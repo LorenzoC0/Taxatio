@@ -3,25 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coordinator;
+use App\Models\Professor;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 
 class CoordinatorController extends Controller
-{   
+{
+    public function index($coordinatorId){
+        $coordinator = Coordinator::find($coordinatorId);
 
+        return view('coordinators.home',[
+            'coordinator'=>$coordinator
+        ]);
+    }
 
     public function create(){
-        return view('coordinator.create');
-    } 
+        return view('coordinators.create');
+    }
     public function store(Request $request){
-        $validatedData = $request->validate([
-            "name" => "required",
-            "surname" => "required",
-            "cf" => "required",
-        ]);
-        Coordinator::create($validatedData);
-        return redirect('/coordinator/home');
+        $coordinator = new Coordinator();
+        $coordinator->name = $request->name;
+        $coordinator->surname = $request->surname;
+        $coordinator->save();
+
+        return redirect('/welcome');
     }
     public function modifica($id){
         return view('coordinators.edit',[
@@ -31,18 +38,13 @@ class CoordinatorController extends Controller
 
     public function elimina($id){
         Coordinator::destroy($id);
-        return redirect('/coordinator/home');
+        return redirect('/welcome');
     }
     public function update(Request $request, $id){
         $coordinator = Coordinator::find($id);
-        $validatedData = $request->validate([
-            "name" => "required",
-            "surname" => "required",
-            "cf" => "required",
-
-        ]);
-        $coordinator->fill($validatedData);
+        $coordinator->name = $request->name;
+        $coordinator->surname = $request->surname;
         $coordinator->save();
-        return redirect('/coordinator/home');
+        return redirect('/welcome');
     }
 }

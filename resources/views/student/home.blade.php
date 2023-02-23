@@ -5,10 +5,10 @@
 @endsection
 
 @section('body')
-    <div class="w-full h-full bg-amber-100 px-3">
-        <div class="flex flex-row h-16">
+    <div class="w-screen h-screen bg-amber-100">
+        <div class="flex flex-row h-16 px-3">
             <div class="flex items-end h-16 w-4/6">
-                <p class="flex text-3xl mb-1">Ciao David!</p>
+                <p class="flex text-3xl mb-1">Ciao {{$student->name}}!</p>
             </div>
             <div class="flex items-end justify-end h-16 w-2/6">
                 <form>
@@ -26,217 +26,35 @@
                 </form>
             </div>
         </div>
-        <div class="flex h-9">
-            <p class="flex items-center">Ti sei loggato come studente PASCAL , dai un occhio alle valutazioni...</p>
-        </div>
-        <div class="flex flex-row h-[80px] justify-around w-full rounded-2xl bg-white">
-            <div class="w-[400px] p-3">
-                <p class="text-lg font-medium">Lo stato delle tue valutazioni è :</p>
-                <div class="flex">
-                    <div class="w-[250px] my-auto bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-                    </div>
-                    <div class="justify-end items-center px-2">
-                        <p class="text-lg font-medium">45%</p>
-                    </div>
-                </div>
-            </div>
-            <div class="w-[200px] p-3">
-                <p class="text-lg font-medium">Hai valutato :</p>
-                <p class="text-lg font-medium">12/20 insegnanti</p>
-            </div>
-            <div class="w-1/2 bg-orange-100 rounded-3xl m-1">
-                <div class="flex flex-row justify-between m-2">
-                    <p>ti è stata mandata la valutazione in data</p>
-                    <p>12 maggio 2023</p>
-                </div>
-                <div class="flex flex-row justify-between m-2">
-                    <p>ricordati di terminarla entro il</p>
-                    <p>17 maggio 2023</p>
-                </div>
-            </div>
+        <div class="flex h-9 px-3">
+            <p class="flex items-center">Ti sei loggato come studente PASCAL , dai un occhio alle valutazioni...
+            </p>
         </div>
         <div class="flex flex-col mt-4">
-            <div class="flex flex-row justify-between">
+            <div class="flex flex-row justify-between px-3">
                 <p class="text-3xl">Da completare</p>
             </div>
             <div class="flex flex-row overflow-x-scroll">
                 <div class="flex h-[350px] px-3">
                     <div class="flex flex-col h-[250px] w-[400px] bg-orange-300 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
+                        <div class="flex items-center h-[80px] m-auto">
+                            <p class="text-3xl">CLASSE PIXEL</p>
                         </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
+                        <div class="flex justify-between h-[80px] px-4 my-auto">
+                            <p>aaaa</p>
+                            <p>eeee</p>
                         </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
+                        <div class="inline-flex h-[90px] px-4">
                             <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-3xl">
-                                VALUTA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-orange-300 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-3xl">
-                                VALUTA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-orange-300 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-3xl">
-                                VALUTA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-orange-300 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-3xl">
-                                VALUTA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-orange-300 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-3xl">
+                                class="m-auto h-[50px] w-[160px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl">
                                 VALUTA
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-row justify-between">
-                <p class="text-3xl">Completate</p>
-            </div>
-            <div class="flex flex-row overflow-x-scroll">
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-amber-200 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-3xl">
-                                VISUALIZZA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-amber-200 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-3xl">
-                                VISUALIZZA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-amber-200 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-3xl">
-                                VISUALIZZA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-amber-200 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-3xl">
-                                VISUALIZZA
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex h-[350px] px-3">
-                    <div class="flex flex-col h-[250px] w-[400px] bg-amber-200 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
-                        </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
-                        </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
-                            <button
-                                class="my-auto h-[50px] w-[180px] bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-3xl">
-                                VISUALIZZA
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex flex-row justify-between px-3">
+                <p class="text-3xl px-3">Completate</p>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

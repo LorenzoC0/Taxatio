@@ -36,15 +36,16 @@ class LoginController extends Controller
 
         User::create($validatedData);
 
-        // if($request['role'] == "admin"){
-        //     AdminController::create($request->all());
-        // }else if($request['role'] == "coordinator"){
-        //     CoordinatorController::create($request->all());
-        // }else if($request['role'] == "professor"){
-        //     ProfessorController::create($request->all());
-        // }
+        if($request['role'] == "admin"){
+            Admin::create($request->all());
+        }else if($request['role'] == "coordinator"){
+            Coordinator::create($request->all());
+        }else if($request['role'] == "professor"){
+            Professor::create($request->all());
+        }
 
-        return redirect()->route("welcome");
+
+        return redirect('/home');
     }
 
     public function doRegisterStudent(Request $request){
@@ -56,27 +57,30 @@ class LoginController extends Controller
             'role' => 'required|in:student'
         ]);
 
-        $request['password'] = Hash::make($request['password']);
+        $validatedData['role'] = "student";
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
         User::create($validatedData);
-        Student::create($validatedData);
+        Student::create($request->validate([
+            'cf'=> 'required|size:16',
+        ]));
 
-        return redirect()->route("welcome");
+        return redirect('/attesa');
     }
 
     public function doLogin(Request $request){
         $validatedData = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'email' => ['required', "email"],
+            'password' => ['required']
         ]);
 
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect('/home');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+            'email' => 'Le credenziali non sono corrette.',
+        ])->onlyInput('email');
     }
 }
