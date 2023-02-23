@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Role
 {
@@ -14,11 +15,12 @@ class Role
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, ...$role)
     {
-        if (Auth::user() && Auth::user()->role == $role) {
+        if(Auth::user()->role === $role) {
             return $next($request);
+        } else {
+            abort(403, 'Non sei autorizzato a visualizzare questa pagina.');
         }
-        abort(403, 'Non sei autorizzato a visualizzare questa pagina.');
     }
 }
