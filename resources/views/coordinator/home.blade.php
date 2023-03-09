@@ -5,7 +5,8 @@
 @endsection
 
 @section('body')
-    <div class="flex flex-row h-16 px-3">
+<div class="w-full h-full bg-amber-100 p-4">
+    <div class="flex flex-row h-16">
         <div class="flex items-end h-16 w-4/6">
             <p class="flex text-3xl mb-1">Ciao _________!</p>
         </div>
@@ -20,21 +21,21 @@
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
-                    <input type="search" class="h-7 w-48 rounded-2xl text-black my-1 mx-2 bg-[#CFFFF3]">
+                    <input type="search" class="h-8 w-64 rounded-2xl text-black my-1 px-8 border border-black">
                 </div>
             </form>
         </div>
     </div>
-    <div class="flex h-9 px-3">
+    <div class="flex h-9">
         <p class="flex items-center">Ti sei loggato come _______, dai un occhio allo stato delle valutazioni...
         </p>
     </div>
     <div class="flex flex-col mt-4">
-        <div class="flex flex-row justify-between px-3">
+        <div class="flex flex-row justify-between">
             <p class="text-3xl">PRIMO ANNO</p>
         </div>
         <div class="flex flex-row overflow-x-scroll">
-            <div class="glide flex h-[450px] px-3">
+            <div class="glide flex h-[450px]">
                 <div class="flex flex-col h-[400px] w-[400px] bg-[#EED9FE] rounded-[50px] my-auto">
                     <div class="flex items-center h-[80px] m-auto">
                         <p class="text-3xl">CLASSE PIXEL</p>
@@ -85,12 +86,12 @@
             
             
             <div class="flex h-[450px] px-3">
-                <div class="flex flex-col h-[400px] w-[400px] bg-blue-300 rounded-[50px] my-auto">
+                <div class="flex flex-col h-[400px] w-[400px] bg-[#CFFFF3] rounded-[50px] my-auto">
                     <div class="flex items-center h-[80px] m-auto">
                         <p class="text-3xl">CLASSE PIXEL</p>
                     </div>
                     <div class="inline-flex h-[230px] p-3">
-                        <div class="w-[150px] bg-blue-400 rounded-2xl p-3">
+                        <div class="w-[150px] bg-[#67EBCB] rounded-2xl p-3">
                             <span>
                                 <p>aaaa</p>
                                 <p>bbbbb</p>
@@ -121,11 +122,11 @@
                     </div>
                     <div class="inline-flex h-[90px] px-4">
                         <button
-                            class="m-auto h-[50px] w-[160px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                            class="m-auto h-[50px] w-[160px] bg-[#67EBCB] hover:bg-green-500 text-white font-bold py-2 px-4 rounded-xl">
                             STUDENTI
                         </button>
                         <button
-                            class="m-auto h-[50px] w-[160px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                            class="m-auto h-[50px] w-[160px] bg-[#67EBCB] hover:bg-green-500 text-white font-bold py-2 px-4 rounded-xl">
                             INSEGNANTI
                         </button>
                     </div>
@@ -274,11 +275,11 @@
             </div>
         </div>
         <div class="flex flex-col mt-4">
-            <div class="flex flex-row justify-between px-3">
+            <div class="flex flex-row justify-between">
                 <p class="text-3xl">SECONDO ANNO</p>
             </div>
             <div class="flex flex-row overflow-x-scroll">
-                <div class="glide flex h-[450px] px-3">
+                <div class="glide flex h-[450px]">
                     <div class="flex flex-col h-[400px] w-[400px] bg-blue-300 rounded-[50px] my-auto">
                         <div class="flex items-center h-[80px] m-auto">
                             <p class="text-3xl">CLASSE PIXEL</p>
@@ -514,5 +515,5 @@
                     </div>
                 </div>
             </div>
-        
+        </div>
 @endsection
