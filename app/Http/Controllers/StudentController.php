@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class StudentController extends Controller
-{   
+{
+    public function index($studentId){
+        $student = Student::find($studentId);
 
+        return view('students.home',[
+            'student'=>$student
+        ]);
+    }
 
     public function create(){
         return view('students.create');
-    } 
+    }
     public function store(Request $request){
         $validatedData = $request->validate([
             "name" => "required",

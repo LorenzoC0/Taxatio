@@ -8,50 +8,46 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class ValutationController extends Controller
-{   
+{
 
 
-    public function create(){
+    public function create()
+    {
         return view('valutations.create');
-    } 
-    public function store(Request $request, $id_student){
-        
+    }
+    public function store(Request $request, $id_student)
+    {
         $validatedData = $request->validate([
-            "grade" => "required",
-            "comment" => "required",
-            "status" => "required",
-            "professor_id" => "required",
-            
+            'grade' => 'required|numeric|min:18|max:30',
+            'comment' => 'required',
+            'status' => 'required|in:approved,not approved',
+            'professor_id' => 'required|numeric',
         ]);
-        
-        $student_id_hash = Hash::make($id_student);
-        $validatedData['student_id_hash'] = $student_id_hash;
-        Valutation::create($validatedData);
+
+        $validatedData['student_id'] = $id_student;
+
+
         return redirect('/welcome');
     }
-    public function modifica($id){
-        return view('valutations.edit',[
-            'valutation'=>Valutation::find($id)
+    public function modifica($id)
+    {
+        return view('valutations.edit', [
+            'valutation' => Valutation::find($id)
         ]);
     }
 
-    public function elimina($id){
+    public function elimina($id)
+    {
         valutation::destroy($id);
         return redirect('/welcome');
     }
-    public function update(Request $request, $id, $id_student){
+    public function update(Request $request, $id)
+    {
         $valutation = Valutation::find($id);
 
-        $validatedData = $request->validate([
-            "grade" => "required",
-            "comment" => "required",
-            "status" => "required",
-            "professor_id" => "required",
-        ]);
-        
-        $student_id_hash = Hash::make($id_student);
-        $validatedData['student_id_hash'] = $student_id_hash;
-        $valutation->fill($validatedData);
+        $valutation->grade = $request->grade;
+        $valutation->comment = $request->comment;
+        $valutation->status = $request->status;
         $valutation->save();
 
         return redirect('/welcome');

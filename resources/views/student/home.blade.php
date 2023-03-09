@@ -8,7 +8,7 @@
     <div class="w-full h-full bg-amber-100 p-4">
         <div class="flex flex-row h-16">
             <div class="flex items-end h-16 w-4/6">
-                <p class="flex text-3xl mb-1">Ciao David!</p>
+                <p class="flex text-3xl mb-1">Ciao {{$student->name}}!</p>
             </div>
             <div class="flex items-end justify-end h-16 w-1/3">
                 <form>
@@ -65,14 +65,14 @@
             <div class="flex flex-row overflow-x-scroll space-x-10">
                 <div class="flex h-[300px] px-3">
                     <div class="flex flex-col h-[250px] w-[400px] bg-orange-300 rounded-[50px] my-auto">
-                        <div class="flex items-center justify-start h-[80px] px-6">
-                            <p class="text-3xl">Marco Rocchetto</p>
+                        <div class="flex items-center h-[80px] m-auto">
+                            <p class="text-3xl">CLASSE PIXEL</p>
                         </div>
-                        <div class="flex justify-between h-[80px] px-6 items-center text-xl">
-                            <p>Cyber Security</p>
-                            <p>5 lezioni</p>
+                        <div class="flex justify-between h-[80px] px-4 my-auto">
+                            <p>aaaa</p>
+                            <p>eeee</p>
                         </div>
-                        <div class="inline-flex h-[90px] px-6 justify-end">
+                        <div class="inline-flex h-[90px] px-4">
                             <button
                                 class="my-auto h-[50px] w-[180px] bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-3xl">
                                 VALUTA
@@ -240,5 +240,4 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

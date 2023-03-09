@@ -178,3 +178,120 @@ body {
     color: #C6F5FF;
     background-color: #0095B6 !important;
 }
+
+/*----------------------------------------------*/
+
+/*---------------------homepage-------------------------*/
+
+.background-homepage {
+  background-color: #00132A;
+ /* background-image: url(https://unsplash.com/it/foto/aJTiW00qqtI); */
+  position: relative;
+  height: 100vh;
+}
+.background-homepage img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+}
+.sfondo-login-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #021124e8;
+}
+.container-home {
+  position: relative;
+  margin: auto;
+  width: 600px;
+  height: 300px;
+  padding-top: 100px;
+}
+.container-home img{
+  position: absolute;
+  left: 50%;
+  transform:translateX(-50%);
+  width: 373px;
+  height: 127px;
+  margin-top: 30px;
+}
+
+.container-home h1{
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: bold;
+  font-size: 62px;
+  color: #00CE9D;
+}
+
+.testo-home {
+  position: relative;
+  margin: auto;
+  width: 31%;
+  height: auto;
+  padding-top: 100px;
+}
+.testo-home p{
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  color: #ffffff;
+}
+
+.pulsanti-home {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  padding-top: 100px;
+}
+
+.pulsanti-assoluti {
+  position: absolute;
+  width: max-content;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pulsante-accedi {
+  color: #0095B6;
+  text-align: center;
+  width: 100%;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #C6F5FF !important;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-right: 20px;
+}
+.pulsante-accedi:hover {
+  color: #C6F5FF;
+  background-color: #0095B6 !important;
+}
+
+.pulsante-registrati {
+  color: #C6F5FF;
+  text-align: center;
+  width: 100%;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #0095B6 !important;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+.pulsante-registrati:hover {
+  color: #0095B6;
+  background-color: #C6F5FF !important;
+}
