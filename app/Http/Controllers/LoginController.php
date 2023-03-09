@@ -54,7 +54,7 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
             'password_confirmation' => 'required|same:password',
-            'role' => 'required|in:student'
+            'role' => 'required'
         ]);
 
         $validatedData['role'] = "student";
@@ -76,11 +76,25 @@ class LoginController extends Controller
 
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
-            return redirect('/home');
+            return redirect()->intended($this->redirectTo());
         }
 
         return back()->withErrors([
             'email' => 'Le credenziali non sono corrette.',
         ])->onlyInput('email');
+    }
+
+    public function redirectTo(){
+        $role = Auth::user()->role;
+
+        if($role == "admin"){
+            return "/home/admin";
+        }else if($role == "coordinator"){
+            return "/home/coordinator";
+        }else if($role == "professor"){
+            return "/home/professor";
+        }else if($role == "student"){
+            return "/home/student";
+        }
     }
 }

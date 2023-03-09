@@ -19,45 +19,44 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 // Guest Routes
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', function () { return view('welcome'); })->name('welcome');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/register', [LoginController::class, 'doRegisterStudent'])->name('register');
+Route::post('/register', [LoginController::class, 'doRegisterStudent']);
 Route::post('/login', [LoginController::class, 'doLogin']);
 Route::get('/attesa', function () { return view('auth.attesa'); })->name('attesa');
 
 // Authenticated Routes (Coordinators)
-Route::middleware(['auth', 'role:coordinator'])->group(function () {
-    Route::get('/home', [CoordinatorController::class, 'index'])->name('coordinator.home');
-    Route::get('/logout', function () {
-        Auth::logout();
-        return redirect()->route('welcome');
-    })->name('logout');
-});
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:coordinator'])->group(function () {
+        Route::get('/home/coordinator', [CoordinatorController::class, 'index'])->name('coordinator.home');
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect()->route('welcome');
+        })->name('logout');
+    });
 
-// Authenticated Routes (Students)
-Route::middleware(['auth', 'role:student'])->group(function () {
-    Route::get('/home', [StudentController::class, 'index'])->name('student.home');
-    Route::get('/logout', function () {
-        Auth::logout();
-        return redirect()->route('welcome');
-    })->name('logout');
-});
+    Route::middleware(['role:professor'])->group(function () {
+        Route::get('/home/professor', [ProfessorController::class, 'index'])->name('professor.home');
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect()->route('welcome');
+        })->name('logout');
+    });
 
-// Authenticated Routes (Professors)
-Route::middleware(['auth', 'role:professor'])->group(function () {
-    Route::get('/home', [ProfessorController::class, 'index'])->name('professor.home');
-    Route::get('/logout', function () {
-        Auth::logout();
-        return redirect()->route('welcome');
-    })->name('logout');
-});
+    Route::middleware(['role:student'])->group(function () {
+        Route::get('/home/student', [StudentController::class, 'index'])->name('student.home');
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect()->route('welcome');
+        })->name('logout');
+    });
 
-// Authenticated Routes (Administrators)
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
-    Route::get('/logout', function () {
-        Auth::logout();
-        return redirect()->route('welcome');
-    })->name('logout');
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/home/admin', [AdminController::class, 'index'])->name('admin.home');
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect()->route('welcome');
+        })->name('logout');
+    });
 });
